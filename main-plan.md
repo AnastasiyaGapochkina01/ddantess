@@ -1,5 +1,5 @@
 1) Типы архитектур, введение в High Availability и Fault Tolerance
-2) Микросервисная архитектрура - docker
+2) Микросервисная архитектрура; Docker
 3) CI/CD (gitlab ci / jenkins)
 4) IaC
 - ansible
