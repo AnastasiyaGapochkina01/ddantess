@@ -1,3 +1,6 @@
+0) Изучить
+- https://youtu.be/W7ku22XUFUc
+- https://youtu.be/ef-Kmw4FShU
 1) Выполнить ДЗ №1 (https://github.com/AnastasiyaGapochkina01/ddantess/blob/main/docker-hw-01.md)
 2) Запустить с помощью docker compose `postgresql` и `pgadmin`
 3) Запустить с помощью docker compose приложение https://gitlab.com/devops201206/counter
