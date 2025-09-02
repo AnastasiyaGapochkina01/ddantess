@@ -1,0 +1,6 @@
+---
+# defaults file for node_app
+pg_user: appuser
+pg_pass: supersecret
+pg_table: visits
+db_name: appdb

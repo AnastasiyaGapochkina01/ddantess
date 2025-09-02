@@ -1,0 +1,76 @@
+---
+- name: install deps
+  apt:
+    name:
+      - gnupg2
+      - software-properties-common
+      - apt-transport-https
+      - python3-psycopg2
+      - acl
+      - python3-pip
+      - redis
+      - python3-venv
+    update_cache: yes
+    state: present
+
+- name: install postgres
+  apt:
+    name: postgresql
+    state: present
+
+- name: Create user
+  become: true
+  become_user: postgres
+  postgresql_user:
+    name: "{{ pg_user }}"
+    password: "{{ pg_pass }}"
+
+- name: Create db
+  become: true
+  become_user: postgres
+  postgresql_db:
+    name: "{{ db_name }}"
+    owner: "{{ pg_user }}"
+
+- name: Ensure db table for temp is present
+  become: true
+  become_user: postgres
+  postgresql_table:
+    db: "{{ db_name }}"
+    table: "{{ pg_table }}"
+    owner: "{{ pg_user }}"
+    columns:
+    - id serial primary key
+    - timestamp date
+
+- name: create dirr
+  file:
+    path: /opt/visits
+    state: directory
+    mode: '0755'
+
+- name: copy files
+  copy:
+    src: app.py
+    dest: /opt/visits/app.py
+    mode: '0755'
+
+- name: gen .env
+  template:
+    src: env.j2
+    dest: /opt/visits/.env
+
+- name: install dep for py
+  pip:
+    name:
+      - Flask
+      - psycopg2-binary
+      - redis
+      - python-dotenv
+    virtualenv: /opt/visits/venv
+    virtualenv_command: python3 -m venv
+
+- name: run app
+  command: >
+    /opt/visits/venv/bin/python3 /opt/visits/app.py
+  async: 0
