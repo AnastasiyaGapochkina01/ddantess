@@ -1,0 +1,12 @@
+server {
+  listen 80;
+  server_name {{ prj_name }};
+
+  location /static {
+    alias {{ prj_name }}/staticfiles;
+  }
+
+  location / {
+    proxy_pass http://{{ backend }};
+  }
+}

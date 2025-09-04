@@ -1,0 +1,15 @@
+---
+- name: Prepare
+  hosts: all
+  gather_facts: false
+  tasks:
+  #  - name: Update apt cache
+  #    apt:
+  #      update_cache: yes
+  #      cache_valid_time: 3600
+
+    - name: Install python
+      raw: test -e /usr/bin/python || (apt update -y && apt install -y python3)
+      changed_when: false
+      register: output
+      failed_when: output.rc != 0

@@ -1,0 +1,29 @@
+#SPDX-License-Identifier: MIT-0
+---
+# tasks file for simple_nginx
+
+- name: Install nginx
+  apt:
+    name: nginx
+    state: latest
+    update_cache: yes
+
+- name: Configure nginx
+  template:
+    src: nginx.conf.j2
+    dest: "/etc/nginx/sites-available/{{ prj_name }}"
+
+- name: Enable nginx
+  file:
+    src: "/etc/nginx/sites-available/{{ prj_name }}"
+    dest: "/etc/nginx/sites-enabled/{{ prj_name }}"
+    state: link
+
+- name: Remove default
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+
+- name: Restart and enable nginx
+  shell: NGINX_PID=$(pgrep -f "'nginx: master'") ; kill -HUP $NGINX_PID
+

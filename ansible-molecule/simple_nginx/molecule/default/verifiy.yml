@@ -1,0 +1,25 @@
+---
+- name: Verify
+  hosts: all
+  tasks:
+    - name: Check nginx installed
+      package:
+        name: nginx
+        state: present
+
+    - name: Check nginx runnig
+      shell: ps aux | grep [n]ginx
+      register: nginx_process
+      failed_when: nginx_process.rc != 0
+      changed_when: false
+
+    - name: Check nginx port
+      uri:
+        url: http://localhost
+        return_content: yes
+      register: nginx_resp
+      until: nginx_resp.status == 200
+      retries: 5
+      delay: 2
+
+

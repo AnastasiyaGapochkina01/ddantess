@@ -1,0 +1,9 @@
+---
+driver:
+  name: docker
+  pull: true
+platforms:
+  - name: instance1
+    image: ubuntu:22.04
+    pre_build_image: true
+
