@@ -20,7 +20,7 @@ Pass: 0000
 ##### dragons
 ВМ с базой даннх и бэкендом. Бэкенд запущен как systemd-unit `dragon-catalog.service`
 
-IP: 89.169.185.126\
+IP: 89.169.183.187\
 User: devops\
 Pass: 0000
 
