@@ -2,12 +2,12 @@
 ## Инфраструктура
 #### Backend
 Машина `microblog`:
-- IP: 89.169.185.161
+- IP: 89.169.184.15
 - User: devops
 - Pass: 0000
 #### Database
 Машина `blog-mongo-cluster`
-- IP: 89.169.184.26
+- IP: 51.250.27.60
 - User: devops
 - Pass: 0000
 #### Разработка
