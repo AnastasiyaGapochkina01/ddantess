@@ -11,6 +11,16 @@ InfluxDB и RabbitMQ запущены через docker compose; dashboard-front
 
 <img width="586" height="304" alt="image" src="https://github.com/user-attachments/assets/e53e8427-e30a-4066-80fd-42b0580dc368" />
 
+## Машины
+#### dash-rabbit
+IP: `89.169.191.150`\
+Login/Pass: `devops/0000`
+#### dash-back
+IP: `84.201.167.53`\
+Login/Pass: `devops/0000`
+#### dash-front
+IP: `158.160.9.223`\
+Login/Pass: `devops/0000`
 ## Запуск агента
 Скомпилируйте Go-агент:
 
