@@ -7,7 +7,7 @@
 4) Фронтенд на React: отображает графики метрик на дашборде, запрашивая данные с backend API.
 5) RabbitMQ: брокер сообщений для асинхронной передачи метрик от агентов к backend.
 
-InfluxDB и RabbitMQ запущены через docker compose
+InfluxDB и RabbitMQ запущены через docker compose; dashboard-frontend и dashboard-backend запущены как systemd юниты
 
 <img width="586" height="304" alt="image" src="https://github.com/user-attachments/assets/e53e8427-e30a-4066-80fd-42b0580dc368" />
 
